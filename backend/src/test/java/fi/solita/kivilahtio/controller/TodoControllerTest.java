@@ -78,7 +78,7 @@ public class TodoControllerTest {
 
 	@Test
 	public void createTodo_withValidationError() throws Exception {
-		Todo mockTodo = new Todo(CREATED_TODO_ID, "Jack", "Learn Spring MVC", new Date(), false);
+		Todo mockTodo = new Todo(CREATED_TODO_ID, "Jack", "Learn", new Date(), false);
 		String todo = "{\"user\":\"Jack\",\"desc\":\"Learn\",\"done\":\"false\"}";
 		when(service.addTodo(anyString(), anyString(), isNull(), anyBoolean())).thenReturn(mockTodo);
 		MvcResult result = mvc.perform(
