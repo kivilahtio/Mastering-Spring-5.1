@@ -1,4 +1,4 @@
-package com.mastering.spring.springboot.controller;
+package fi.solita.kivilahtio.controller;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;

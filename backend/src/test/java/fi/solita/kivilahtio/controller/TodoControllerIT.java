@@ -1,4 +1,4 @@
-package com.mastering.spring.springboot.controller;
+package fi.solita.kivilahtio.controller;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
@@ -9,6 +9,8 @@ import java.nio.charset.Charset;
 import java.util.Base64;
 import java.util.Date;
 
+import fi.solita.kivilahtio.Application;
+import fi.solita.kivilahtio.bean.Todo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -21,9 +23,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.mastering.spring.springboot.Application;
-import com.mastering.spring.springboot.bean.Todo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

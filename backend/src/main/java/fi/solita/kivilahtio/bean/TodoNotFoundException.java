@@ -1,4 +1,4 @@
-package com.mastering.spring.springboot.bean;
+package fi.solita.kivilahtio.bean;
 
 public class TodoNotFoundException extends RuntimeException {
 	public TodoNotFoundException(String msg) {

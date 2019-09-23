@@ -1,4 +1,4 @@
-package com.mastering.spring.springboot;
+package fi.solita.kivilahtio;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

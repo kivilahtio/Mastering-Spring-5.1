@@ -1,4 +1,4 @@
-package com.mastering.spring.springboot.service;
+package fi.solita.kivilahtio.service;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.mastering.spring.springboot;
+package fi.solita.kivilahtio;
 
 import java.util.Arrays;
 import java.util.Locale;

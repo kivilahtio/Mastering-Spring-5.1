@@ -1,4 +1,4 @@
-package com.mastering.spring.springboot.controller;
+package fi.solita.kivilahtio.controller;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.mastering.spring.springboot.bean.Todo;
-import com.mastering.spring.springboot.bean.TodoNotFoundException;
-import com.mastering.spring.springboot.service.TodoService;
+import fi.solita.kivilahtio.bean.Todo;
+import fi.solita.kivilahtio.bean.TodoNotFoundException;
+import fi.solita.kivilahtio.service.TodoService;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -49,7 +49,7 @@ public class TodoController {
 			throw new TodoNotFoundException("Todo Not Found");
 		}
 
-		Resource<Todo> todoResource = new Resource<com.mastering.spring.springboot.bean.Todo>(todo);
+		Resource<Todo> todoResource = new Resource<Todo>(todo);
 		ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).retrieveTodos(name));
 		todoResource.add(linkTo.withRel("parent"));
 		return todoResource;

@@ -1,4 +1,4 @@
-package com.mastering.spring.springboot.controller;
+package fi.solita.kivilahtio.controller;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.mockito.ArgumentMatchers.anyBoolean;
@@ -14,6 +14,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import fi.solita.kivilahtio.bean.Todo;
+import fi.solita.kivilahtio.service.TodoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -25,9 +27,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import com.mastering.spring.springboot.bean.Todo;
-import com.mastering.spring.springboot.service.TodoService;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = TodoController.class, secure = false)

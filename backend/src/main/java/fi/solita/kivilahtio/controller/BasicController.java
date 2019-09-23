@@ -1,4 +1,4 @@
-package com.mastering.spring.springboot.controller;
+package fi.solita.kivilahtio.controller;
 
 import java.util.Locale;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mastering.spring.springboot.bean.WelcomeBean;
+import fi.solita.kivilahtio.bean.WelcomeBean;
 
 @RestController
 public class BasicController {
