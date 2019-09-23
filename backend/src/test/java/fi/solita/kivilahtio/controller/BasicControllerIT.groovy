@@ -1,4 +1,9 @@
-package fi.solita.kivilahtio.controller;
+package fi.solita.kivilahtio.controller
+
+import org.junit.Rule
+import org.junit.rules.TestWatcher
+import org.junit.runner.Description
+import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -12,6 +17,32 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
+import spock.lang.Specification;
+
+@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class LoadContextTest extends Specification {
+
+	@Rule
+	public TestWatcher watchman = new TestWatcher() {
+		@Override
+		protected void failed(Throwable e, Description description) {
+			System.out.println(description + e);
+		}
+
+		@Override
+		protected void succeeded(Description description) {
+			System.out.println(description);
+		}
+	};
+
+	@Autowired
+	private MockMvc mvc
+
+	def "when context is loaded then all expected beans are created"() {
+		expect: "the WebController is created"
+		mvc
+	}
+}
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
