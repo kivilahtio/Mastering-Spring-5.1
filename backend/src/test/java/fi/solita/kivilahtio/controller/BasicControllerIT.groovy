@@ -1,5 +1,7 @@
 package fi.solita.kivilahtio.controller
 
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 import org.junit.Rule
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
@@ -22,19 +24,6 @@ import spock.lang.Specification;
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class LoadContextTest extends Specification {
 
-	@Rule
-	public TestWatcher watchman = new TestWatcher() {
-		@Override
-		protected void failed(Throwable e, Description description) {
-			System.out.println(description + e);
-		}
-
-		@Override
-		protected void succeeded(Description description) {
-			System.out.println(description);
-		}
-	};
-
 	@Autowired
 	private MockMvc mvc
 
@@ -47,6 +36,23 @@ class LoadContextTest extends Specification {
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BasicControllerIT {
+
+	@Rule
+	public TestWatcher watchman = new TestWatcher() {
+
+		private static Logger logger = LogManager.getLogger(BasicControllerIT.class);
+		@Override
+		protected void failed(Throwable e, Description description) {
+			logger.info(description + e);
+			System.out.println(description + e);
+		}
+
+		@Override
+		protected void succeeded(Description description) {
+			logger.info(description);
+			System.out.println(description);
+		}
+	};
 
 	@Autowired
 	private TestRestTemplate template;

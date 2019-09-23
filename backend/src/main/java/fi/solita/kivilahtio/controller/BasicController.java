@@ -2,6 +2,9 @@ package fi.solita.kivilahtio.controller;
 
 import java.util.Locale;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +16,19 @@ import fi.solita.kivilahtio.bean.WelcomeBean;
 
 @RestController
 public class BasicController {
+	private static Logger logger = LogManager.getLogger(BasicController.class);
 
 	@Autowired
 	private MessageSource messageSource;
 
 	@GetMapping("/welcome")
 	public String welcome() {
+		logger.debug("This is a debug message");
+		logger.info("This is an info message");
+		logger.warn("This is a warn message");
+		logger.error("This is an error message");
+		logger.fatal("This is a fatal message");
+
 		return "Hello World";
 	}
 
