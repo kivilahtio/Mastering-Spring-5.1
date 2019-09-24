@@ -1,10 +1,10 @@
-package fi.solita.kivilahtio.controller
+package fi.solita.kivilahtio.controller;
 
-import org.apache.logging.log4j.LogManager
-import org.apache.logging.log4j.Logger
-import org.junit.Rule
-import org.junit.rules.TestWatcher
-import org.junit.runner.Description
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Rule;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -19,40 +19,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import spock.lang.Specification;
+import test.solita.kivilahtio.TestLogger;
 
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class LoadContextTest extends Specification {
-
-	@Autowired
-	private MockMvc mvc
-
-	def "when context is loaded then all expected beans are created"() {
-		expect: "the WebController is created"
-		mvc
-	}
-}
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BasicControllerIT {
 
 	@Rule
-	public TestWatcher watchman = new TestWatcher() {
-
-		private static Logger logger = LogManager.getLogger(BasicControllerIT.class);
-		@Override
-		protected void failed(Throwable e, Description description) {
-			logger.info(description + e);
-			System.out.println(description + e);
-		}
-
-		@Override
-		protected void succeeded(Description description) {
-			logger.info(description);
-			System.out.println(description);
-		}
-	};
+	public TestWatcher watchman = new TestLogger();
 
 	@Autowired
 	private TestRestTemplate template;

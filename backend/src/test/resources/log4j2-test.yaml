@@ -13,10 +13,15 @@ Configuration:
       PatternLayout:
         pattern: "%highlight{[%-5level]} %d{HH:mm:ss.SSS} %c{1.}.%M - %msg%n"
     File:
-      name: File_Appender
-      fileName: ${log-path}/logfile.log
-      PatternLayout:
-        pattern: "%highlight{[%-5level]} %d{HH:mm:ss.SSS} %c{1.}.%M - %msg%n"
+      - name: File_Appender
+        fileName: ${log-path}/logfile.log
+        PatternLayout:
+          pattern: "%highlight{[%-5level]} %d{HH:mm:ss.SSS} %c{1.}.%M - %msg%n"
+      - name: TestFile_Appender
+        fileName: ${log-path}/logfile.log
+        PatternLayout:
+          pattern: "Test %-4X{testNumber} [%-2X{testStatus}] %msg%n"
+
 
   Loggers:
     Root:
@@ -29,4 +34,9 @@ Configuration:
         AppenderRef:
           - ref: File_Appender
             level: trace
+      - name: test.solita.kivilahtio
+        level: info
+        AppenderRef:
+          - ref: TestFile_Appender
+            level: info
 
