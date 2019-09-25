@@ -12,9 +12,13 @@ A simple Java Spring Boot backend web service.
 
 #### Run all tests and generate a html report:
 
-  $ mvn 
+  $ mvn surefire-report:report
 
 Access the report with:
 
   firefox target/site/surefire-report.html
+
+#### Maven dependency tree to figure out dependency issues
+
+  $ mvn dependency:tree
 
