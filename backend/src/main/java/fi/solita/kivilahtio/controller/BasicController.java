@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fi.solita.kivilahtio.bean.WelcomeBean;
 
+import javax.annotation.security.RolesAllowed;
+
 @RestController
 public class BasicController {
 	private static Logger logger = LogManager.getLogger(BasicController.class);
@@ -22,6 +24,7 @@ public class BasicController {
 	private MessageSource messageSource;
 
 	@GetMapping("/welcome")
+	@RolesAllowed({})
 	public String welcome() {
 		logger.debug("This is a debug message");
 		logger.info("This is an info message");
@@ -33,6 +36,7 @@ public class BasicController {
 	}
 
 	@GetMapping("/welcome-with-object")
+	@RolesAllowed({"ALPHA"})
 	public WelcomeBean welcomeWithObject() {
 		return new WelcomeBean("Hello World");
 	}
@@ -40,11 +44,13 @@ public class BasicController {
 	private static final String helloWorldTemplate = "Hello World, %s!";
 
 	@GetMapping("/welcome-with-parameter/name/{name}")
+	@RolesAllowed({"BETA"})
 	public WelcomeBean welcomeWithParameter(@PathVariable String name) {
 		return new WelcomeBean(String.format(helloWorldTemplate, name));
 	}
 
 	@GetMapping("/welcome-internationalized")
+	@RolesAllowed({"GAMMA"})
 	public String msg(@RequestHeader(value = "Accept-Language", required = false) Locale locale) {
 		return messageSource.getMessage("welcome.message", null, locale);
 	}
